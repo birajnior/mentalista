@@ -4,8 +4,9 @@ let tentativas = 3
 let chances = document.getElementById('tentativas')
 
 
-const audioErrou = document.querySelector('audio')
+const audioErrou = document.getElementById('errou')
 const audioAcertou = document.getElementById('acertou')
+const audioPerdeu = document.getElementById('perdeu')
 
 function chutar() {
     let resultado = document.getElementById('resultado')
@@ -20,7 +21,9 @@ function chutar() {
         chances.innerHTML = "Você ganhou"   
         document.getElementById('botao').innerHTML = "<button type='submit' onclick='window.location.reload()'>Novo Jogo</button>"
     } else if (tentativas == 0) {
-        chances.innerHTML = "Você perdeu, o número secreto era " + numeroSecreto         
+        chances.innerHTML = "Você perdeu, o número secreto era " + numeroSecreto   
+        document.getElementById('botao').innerHTML = "<button type='submit' onclick='window.location.reload()'>Novo Jogo</button>"
+        audioPerdeu.play()      
     } else if (tentativas < 0) {
         document.addEventListener('click', function () {
             chances.innerHTML = "Suas chances acabaram, comece um novo jogo!"
